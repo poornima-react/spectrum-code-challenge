@@ -93,8 +93,9 @@ const DataTable = ({columns, data = []}) => {
     }
 
     const queryData = () => {
+        const text = query.toLowerCase();
         if (!!query.length) {
-            const filteredData = data.filter(({name, city, genre}) => (name.includes(query) || city.includes(query) || genre.includes(query)));
+            const filteredData = data.filter(({name, city, genre}) => (name.toLowerCase().includes(text) || city.toLowerCase().includes(text) || genre.toLowerCase().includes(text)));
             if (!!filteredData.length) {
                 setActivePage(1);
                 setPageData(1, filteredData);
