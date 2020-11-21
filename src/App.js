@@ -24,7 +24,7 @@ function App({ callAPi }) {
     }, []);
 
     return (
-        <div className="App">
+        <div data-testid='root-app' className="App">
             <PageHeading title='Restaurant List'/>
             <DataTable columns={columns} data={data} />
         </div>
