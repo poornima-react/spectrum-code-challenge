@@ -10,6 +10,11 @@ function App({ callAPi }) {
         callAPi({ path: 'restaurants' })
             .then((response) => {
                 if (response.status === 200) {
+                    response.data.sort(function(a, b){
+                        if(a.name < b.name) { return -1; }
+                        if(a.name > b.name) { return 1; }
+                        return 0;
+                    });
                     setData(response.data);
                 } else {
                     console.log("something went wrong.", response.status);

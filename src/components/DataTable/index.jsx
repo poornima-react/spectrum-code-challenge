@@ -42,6 +42,7 @@ const Table = ({ columns, data, activePage }) => {
 const DataTable = ({columns, data = []}) => {
     const [list, setList] = useState(data);
     const [activePage, setActivePage] = useState(1);
+    const [query, setQuery] = useState(1);
 
     const setPageData = (activePage, data) => {
         const start = (activePage * 10) - 10;
@@ -59,9 +60,20 @@ const DataTable = ({columns, data = []}) => {
         setPageData(currentPageNumber, data);
     }
 
+    const onQuery = (e) => {
+        const value = e.target.value;
+        setQuery(value);
+    }
+
+    const onEnter = (e) => {
+        if (e.key === 'Enter') {
+            console.log('-----query', query);
+        }
+    }
+
     return (
         <div>
-            <SearchInput/>
+            <SearchInput onChange={onQuery} onEnter={onEnter} />
             <div className="data-table-root">
                 <Table columns={columns} data={list} activePage={activePage}/>
                 <Pagination totalItemsCount={data.length} onPageChange={onPageChange}/>
