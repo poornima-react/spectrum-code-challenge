@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import {callAPi} from './utils/callApi';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App callAPi={callAPi} />
   </React.StrictMode>,
   document.getElementById('root')
 );
