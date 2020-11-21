@@ -2,9 +2,14 @@
   margin: 50px auto;
   display: inline-block;
 
+  .column {
+    text-align: center;
+  }
+
   table, th, td {
     border: 1px solid black;
   }
+
 }
 
 

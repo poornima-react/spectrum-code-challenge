@@ -3,7 +3,7 @@ import Pagination from "../Pagination/index";
 import "./index.scss";
 
 const TColumns = ({ columns = [] }) => {
-    const columnsEl = columns.map(({id,name, minWidth}) => <th key={id} style={{minWidth}}>{name}</th>);
+    const columnsEl = columns.map(({id,name, minWidth}) => <th className='column' key={id} style={{minWidth}}>{name}</th>);
     return (
         <thead>
         <tr>{columnsEl}</tr>
@@ -11,25 +11,29 @@ const TColumns = ({ columns = [] }) => {
     );
 };
 
-const TBody = ({ data = [] }) => {
-    const bodyEl = data.map((row) => (
+const TBody = ({ data = [], activePage }) => {
+    const bodyEl = data.map((row, i) =>{
+        const sNo = (activePage * 10) + (i + 1) - 10;
+        return (
         <tr key={row.id}>
+            <td>{sNo}</td>
             <td>{row.name}</td>
             <td>{row.city}</td>
             <td>{row.state}</td>
             <td>{row.telephone}</td>
             <td>{row.genre}</td>
         </tr>
-    ));
+    )}
+    );
 
     return <tbody>{bodyEl}</tbody>;
 };
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, activePage }) => {
     return (
         <table>
             <TColumns columns={columns} />
-            <TBody data={data} />
+            <TBody data={data} activePage={activePage} />
         </table>
     );
 };
@@ -56,7 +60,7 @@ const DataTable = ({columns, data = []}) => {
 
     return (
         <div className="data-table-root">
-            <Table columns={columns} data={list}/>
+            <Table columns={columns} data={list} activePage={activePage}/>
             <Pagination totalItemsCount={data.length} onPageChange={onPageChange} />
         </div>
     );

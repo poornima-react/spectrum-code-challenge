@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "./components/DataTable";
+import PageHeading from "./components/PageHeading/indes";
 import { columns } from "./uiConfig/dataTable";
 import "./App.scss";
 
@@ -19,6 +20,7 @@ function App({ callAPi }) {
 
     return (
         <div className="App">
+            <PageHeading title='Restaurant List'/>
             <DataTable columns={columns} data={data} />
         </div>
     );
