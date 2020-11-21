@@ -1,7 +1,9 @@
 export const columns = [
     {
         id: '1',
-        name: 'Name'
+        name: 'Name',
+        minWidth: 250
+
     },
     {
         id: '2',
@@ -17,6 +19,7 @@ export const columns = [
     },
     {
         id: '5',
-        name: 'Genres'
+        name: 'Genres',
+        minWidth: 400
     }
 ]
