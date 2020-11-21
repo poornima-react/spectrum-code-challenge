@@ -60,8 +60,14 @@ const DataTable = ({columns, data = []}) => {
 
     const queryData = () => {
         const text = query.toLowerCase();
+        let finalList;
         if (!!query.length) {
-            const filteredData = data.filter(({name, city, genre}) => (name.toLowerCase().includes(text) || city.toLowerCase().includes(text) || genre.toLowerCase().includes(text)));
+            if(state === 'All'){
+                finalList = data;
+            } else {
+                finalList = data.filter((restaurant) => restaurant.state == state);
+            }
+            const filteredData = finalList.filter(({name, city, genre}) => (name.toLowerCase().includes(text) || city.toLowerCase().includes(text) || genre.toLowerCase().includes(text)));
             if (!!filteredData.length) {
                 setActivePage(1);
                 setPageData(1, filteredData);
