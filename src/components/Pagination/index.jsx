@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Pagination from "react-js-pagination";
 
 const PaginationWrapper = ({activePage = 1, totalItemsCount, onPageChange}) => {
@@ -10,6 +10,10 @@ const PaginationWrapper = ({activePage = 1, totalItemsCount, onPageChange}) => {
 
     return (
         <Pagination
+            prevPageText='prev'
+            nextPageText='next'
+            firstPageText='first'
+            lastPageText='last'
             activePage={activePage}
             itemsCountPerPage={10}
             totalItemsCount={totalItemsCount}
