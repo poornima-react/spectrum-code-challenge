@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Pagination from "../Pagination/index";
+import SearchInput from "../SearchInput";
 import "./index.scss";
 
 const TColumns = ({ columns = [] }) => {
@@ -59,9 +60,12 @@ const DataTable = ({columns, data = []}) => {
     }
 
     return (
-        <div className="data-table-root">
-            <Table columns={columns} data={list} activePage={activePage}/>
-            <Pagination totalItemsCount={data.length} onPageChange={onPageChange} />
+        <div>
+            <SearchInput/>
+            <div className="data-table-root">
+                <Table columns={columns} data={list} activePage={activePage}/>
+                <Pagination totalItemsCount={data.length} onPageChange={onPageChange}/>
+            </div>
         </div>
     );
 };

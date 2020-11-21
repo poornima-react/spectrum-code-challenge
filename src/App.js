@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "./components/DataTable";
-import PageHeading from "./components/PageHeading/indes";
+import PageHeading from "./components/PageHeading";
 import { columns } from "./uiConfig/dataTable";
 import "./App.scss";
 
