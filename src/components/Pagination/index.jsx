@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
 import Pagination from "react-js-pagination";
 
-const PaginationWrapper = ({totalItemsCount, onPageChange}) => {
-    const [activePage, setActivePage] = useState(1);
+const PaginationWrapper = ({activePage = 1, totalItemsCount, onPageChange}) => {
     const onChange = (currentPageNumber) => {
-        setActivePage(currentPageNumber);
         if(typeof onPageChange === 'function'){
             onPageChange(currentPageNumber)
         }
